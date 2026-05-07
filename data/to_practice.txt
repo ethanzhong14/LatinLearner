@@ -1,14 +1,12 @@
 coquus
 est
 filia
-filius
 in
 laborat
 mater
 pater
 via
 amicus
-ancilla
 cena
 cibus
 dominus
@@ -18,7 +16,6 @@ laudat
 mercator
 quoque
 salutat
-ad
 bibit
 circumspectat
 clamat
@@ -29,7 +26,6 @@ ianua
 iratus
 magnus
 respondet
-ridet
 salve
 sedet
 taberna
@@ -43,7 +39,6 @@ ecce
 ego
 eheu
 forum
-habet
 inquit
 pecunia
 perterritus
@@ -83,9 +78,7 @@ abest
 aberat
 emit
 ferociter
-festinat
 fortis
-fur
 intente
 libertus
 olim
@@ -122,7 +115,6 @@ omnis
 parat
 paravit
 rogat
-rogavit
 surgit
 surrexit
 tacite
@@ -146,7 +138,6 @@ pes
 porta
 postulat
 postulavit
-puer
 pugnat
 pugnavit
 saepe
@@ -187,15 +178,12 @@ tradidit
 abit
 abiit
 accipit
-accepit
 callidus
 capit
 cepit
-contentus
 excalamat
 exclamavit
 frater
-habitat
 habitavit
 imperium
 invenit
@@ -205,7 +193,6 @@ nuntiavit
 pax
 portus
 quam
-semper
 servat
 servavit
 solus
@@ -222,11 +209,9 @@ de
 favet
 favit
 igitur
-invitat
 invitavit
 it
 iit
-legit
 liberalis
 minime
 murus
@@ -253,7 +238,6 @@ complevit
 custodit
 custodivit
 epistula
-flamma
 fortiter
 frustra
 fugit
@@ -268,7 +252,6 @@ mons
 optimi
 paene
 sentit
-sensit
 tandem
 templum
 terra
