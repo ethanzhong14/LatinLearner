@@ -1,292 +1,292 @@
-canis
-coquus
-est
-filia
-filius
-hortus
-in
-laborat
-mater
-pater
-servus
-via
-amicus
-ancilla
-cena
-cibus
-dominus
-dormit
-intrat
-laetus
-laudat
-mercator
-quoque
-salutat
-ad
-bibit
-circumspectat
-clamat
-et
-exit
-exspectat 
-ianua 
-iratus 
-magnus 
-navis 
-non 
-portat 
-respondet
-ridet
-salve
-sedet
-taberna
-videt
-vinum
-agit
-anulus
-coquit 
-cur 
-e 
-ecce 
-ego 
-eheu 
-forum
-habet 
-inquit 
-pecunia 
-perterritus 
-quaerit 
-quis
-reddit 
-satis 
-sed 
-tu 
-vocat 
-adest
-adsunt
-agricola 
-ambulat 
-audit 
-clamor 
-contendit 
-currit
-fabula 
-femina 
-hodie 
-iuvenis 
-meus 
-multus 
-multi 
-optimus 
-petit 
-plaudit 
-puella 
-senex 
-spectat 
-stat 
-turba 
-ubi
-urbs 
-venit
-abest
-aberat
-emit
-ferociter
-festinat
-fortis
-fur 
-intente
-libertus
-olim
-parvus
-per 
-postquam 
-pulsat 
-quod
-res 
-scribit 
-subito 
-superat 
-tum
-tuus 
-vendit 
-vituperat
-conspicit
-conspexit
-cum 
-facit 
-fecit 
-heri 
-ingens 
-intellegit 
-intellexit 
-lacrimat 
-lacrimavit 
-mortuus 
-narrat 
-narravit 
-necat 
-necavit 
-nihil
-omnis 
-parat 
-paravit 
-prope
-rogat 
-rogavit 
-surgit 
-surrexit 
-tacite 
-tamen
-terret 
-terruit 
-valde 
-agitat 
-agitavit 
-ducit 
-duxit 
-eum 
-facile 
-ferox 
-gladius 
-hic 
-ignavus 
-leo 
-nuntius 
-pes 
-porta 
-postulat 
-postulavit 
-puer 
-pugnat 
-pugnavit 
-saepe 
-sanguis 
-signum 
-silva 
-statim 
-totus 
-agnoscit 
-agnovit 
-celeriter 
-cupit 
-cupivit 
-dat 
-dedit 
-dies 
-emittit 
-emisit 
-fert 
-tulit 
-homo 
-hospes 
-ille 
-inspicit 
-iterum
-manet
-mansit
-medius 
-mox 
-offert
-obtulit
-ostendit 
-post
-processit
-pulcher
-revenit
-tradit
-tradidit
-abit
-abiit
-accipit
-accepit
-callidus
-capit
-cepit 
-contentus 
-excalamat 
-exclamavit 
-frater 
-habitat 
-habitavit 
-imperium 
-invenit 
-liber 
-nos 
-nuntiat 
-nuntiavit 
-pax 
-portus 
-quam 
-semper 
-servat 
-servavit 
-solus 
-suus 
-tacet 
-tacuit 
-uxor 
-vehementer 
-vos 
-civis 
-convenit 
-credit 
-de 
-favet 
-favit 
-igitur 
-invitat 
-invitavit 
-it 
-iit 
-legit 
-liberalis 
-minime
-murus 
-noster 
-nunc 
-placet 
-placuit 
-primus 
-promittit 
-promisit 
-pugna 
-senator 
-sollicitus 
-stultus 
-vale 
-verberat 
-verberavit 
-vir 
-amittit
-amisit
-bonus
-complet
-complevit
-custodit 
-custodivit
-epistula 
-flamma 
-fortiter 
-frustra 
-fugit 
-fundus
-iacet
-iacuit 
-iam
-mirabilis 
-mittit 
-misit 
-mons 
-optimi
-paene 
-sentit 
-sensit 
-tandem 
-templum 
-terra 
-timet 
-timuit 
-unus 
-dos 
-tres
+canis : dog : canis in via ambulat.
+coquus : cook : coquus cibum coquit.
+est : is : puella laeta est.
+filia : daughter : filia in horto est.
+filius : son : filius currit.
+hortus : garden : hortus magnus est.
+in : in : puella in horto est.
+laborat : works : agricola laborat.
+mater : mother : mater filium vocat.
+pater : father : pater in via ambulat.
+servus : slave : servus laborat.
+via : road : via longa est.
+amicus : friend : amicus venit.
+ancilla : maid : ancilla cibum portat.
+cena : dinner : cena parata est.
+cibus : food : cibus bonus est.
+dominus : master : dominus servum vocat.
+dormit : sleeps : puer dormit.
+intrat : enters : puer domum intrat.
+laetus : happy : puer laetus est.
+laudat : praises : mater filium laudat.
+mercator : merchant : mercator vinum vendit.
+quoque : also : filius quoque venit.
+salutat : greets : amicus me salutat.
+ad : to : puer ad villam ambulat.
+bibit : drinks : puer vinum bibit.
+circumspectat : looks around : puer circumspectat.
+clamat : shouts : puer clamat.
+et : and : pater et mater adsunt.
+exit : exits : puer domo exit.
+exspectat : waits : mater filium exspectat.
+ianua : door : ianua aperta est.
+iratus : angry : pater iratus est.
+magnus : big : hortus magnus est.
+navis : ship : navis in portu est.
+non : not : puer non dormit.
+portat : carries : servus aquam portat.
+respondet : replies : puer respondet.
+ridet : laughs : puella ridet.
+salve : hello : salve, amice!
+sedet : sits : puer sedet.
+taberna : shop : taberna aperta est.
+videt : sees : puer canem videt.
+vinum : wine : vinum bonum est.
+agit : does : puer rem agit.
+anulus : ring : anulus parvus est.
+coquit : cooks : coquus cenam coquit.
+cur : why : cur puer clamat?
+e : from : puer e villa venit.
+ecce : look : ecce puer!
+ego : I : ego laboro.
+eheu : alas : eheu, puer cadit!
+forum : market : forum magnum est.
+habet : has : puer librum habet.
+inquit : says : pater inquit.
+pecunia : money : pecunia in mensa est.
+perterritus : frightened : puer perterritus est.
+quaerit : seeks : puer aquam quaerit.
+quis : who : quis venit?
+reddit : gives back : puer librum reddit.
+satis : enough : aqua satis est.
+sed : but : puer currit, sed cadit.
+tu : you : tu rides.
+vocat : calls : mater puerum vocat.
+adest : is present : pater adest.
+adsunt : are present : parentes adsunt.
+agricola : farmer : agricola in agro laborat.
+ambulat : walks : puer in via ambulat.
+audit : hears : puer vocem audit.
+clamor : shout : clamor magnus est.
+contendit : hurries : puer ad villam contendit.
+currit : runs : puer currit.
+fabula : story : fabula longa est.
+femina : woman : femina venit.
+hodie : today : puer hodie laborat.
+iuvenis : young man : iuvenis currit.
+meus : my : filius meus venit.
+multus : much : aqua multa est.
+multi : many : multi pueri adsunt.
+optimus : best : puer optimus est.
+petit : asks : puer aquam petit.
+plaudit : applauds : turba plaudit.
+puella : girl : puella ridet.
+senex : old man : senex ambulat.
+spectat : watches : puer navem spectat.
+stat : stands : puer stat.
+turba : crowd : turba magna est.
+ubi : where : ubi est puer?
+urbs : city : urbs magna est.
+venit : comes : puer venit.
+abest : is absent : pater abest.
+aberat : was absent : pater heri aberat.
+emit : buys : mercator cibum emit.
+ferociter : fiercely : leo ferociter pugnat.
+festinat : hurries : puer ad domum festinat.
+fortis : brave : vir fortis est.
+fur : thief : fur fugit.
+intente : carefully : puer intente spectat.
+libertus : freedman : libertus laborat.
+olim : once : olim vir hic habitabat.
+parvus : small : puer parvus est.
+per : through : puer per silvam ambulat.
+postquam : after : postquam venit, sedet.
+pulsat : knocks : puer ianuam pulsat.
+quod : because : puer ridet quod laetus est.
+res : thing : res parva est.
+scribit : writes : puer epistulam scribit.
+subito : suddenly : puer subito currit.
+superat : overcomes : vir hostem superat.
+tum : then : puer venit, tum sedet.
+tuus : your : pater tuus venit.
+vendit : sells : mercator vinum vendit.
+vituperat : blames : pater puerum vituperat.
+conspicit : catches sight of : puer navem conspicit.
+conspexit : caught sight of : puer navem conspexit.
+cum : with : puer cum amico ambulat.
+facit : makes : puer cenam facit.
+fecit : made : puer cenam fecit.
+heri : yesterday : puer heri venit.
+ingens : huge : navis ingens est.
+intellegit : understands : puer fabulam intellegit.
+intellexit : understood : puer fabulam intellexit.
+lacrimat : cries : puella lacrimat.
+lacrimavit : cried : puella lacrimavit.
+mortuus : dead : leo mortuus est.
+narrat : tells : pater fabulam narrat.
+narravit : told : pater fabulam narravit.
+necat : kills : leo cervum necat.
+necavit : killed : leo cervum necavit.
+nihil : nothing : puer nihil videt.
+omnis : all : omnis turba venit.
+parat : prepares : mater cenam parat.
+paravit : prepared : mater cenam paravit.
+prope : near : puer prope villam stat.
+rogat : asks : puer matrem rogat.
+rogavit : asked : puer matrem rogavit.
+surgit : rises : puer surgit.
+surrexit : rose : puer surrexit.
+tacite : quietly : puer tacite sedet.
+tamen : however : puer currit, tamen cadit.
+terret : frightens : leo puerum terret.
+terruit : frightened : leo puerum terruit.
+valde : very : puer valde laetus est.
+agitat : stirs : puer aquam agitat.
+agitavit : stirred : puer aquam agitavit.
+ducit : leads : vir puerum ducit.
+duxit : led : vir puerum duxit.
+eum : him : mater eum vocat.
+facile : easily : puer facile currit.
+ferox : fierce : leo ferox est.
+gladius : sword : vir gladium portat.
+hic : this : hic puer currit.
+ignavus : lazy : puer ignavus est.
+leo : lion : leo rugit.
+nuntius : messenger : nuntius venit.
+pes : foot : pes dolet.
+porta : gate : porta aperta est.
+postulat : demands : vir pecuniam postulat.
+postulavit : demanded : vir pecuniam postulavit.
+puer : boy : puer dormit.
+pugnat : fights : vir pugnat.
+pugnavit : fought : vir pugnavit.
+saepe : often : puer saepe currit.
+sanguis : blood : sanguis in terra est.
+signum : sign : signum magnum est.
+silva : forest : silva magna est.
+statim : at once : puer statim venit.
+totus : whole : totus dies longus est.
+agnoscit : recognizes : puer amicum agnoscit.
+agnovit : recognized : puer amicum agnovit.
+celeriter : quickly : puer celeriter currit.
+cupit : desires : puer aquam cupit.
+cupivit : desired : puer aquam cupivit.
+dat : gives : pater librum dat.
+dedit : gave : pater librum dedit.
+dies : day : dies longus est.
+emittit : sends out : vir nuntium emittit.
+emisit : sent out : vir nuntium emisit.
+fert : carries : servus aquam fert.
+tulit : carried : servus aquam tulit.
+homo : man : homo venit.
+hospes : guest : hospes adest.
+ille : that : ille vir venit.
+inspicit : looks at : puer librum inspicit.
+iterum : again : puer iterum currit.
+manet : stays : puer in villa manet.
+mansit : stayed : puer in villa mansit.
+medius : middle : puer in medio stat.
+mox : soon : puer mox venit.
+offert : offers : puer cibum offert.
+obtulit : offered : puer cibum obtulit.
+ostendit : shows : pater librum ostendit.
+post : after : post cenam dormit.
+processit : advanced : vir processit.
+pulcher : beautiful : puella pulchra est.
+revenit : returns : puer domum revenit.
+tradit : hands over : pater librum tradit.
+tradidit : handed over : pater librum tradidit.
+abit : goes away : puer abit.
+abiit : went away : puer abiit.
+accipit : receives : puer librum accipit.
+accepit : received : puer librum accepit.
+callidus : clever : puer callidus est.
+capit : takes : puer librum capit.
+cepit : took : puer librum cepit.
+contentus : content : puer contentus est.
+excalamat : exclaims : puer exclamat.
+exclamavit : exclaimed : puer exclamavit.
+frater : brother : frater venit.
+habitat : lives : puer in urbe habitat.
+habitavit : lived : puer in urbe habitavit.
+imperium : power : imperium magnum est.
+invenit : finds : puer aquam invenit.
+liber : book : liber bonus est.
+nos : we : nos ambulamus.
+nuntiat : announces : nuntius rem nuntiat.
+nuntiavit : announced : nuntius rem nuntiavit.
+pax : peace : pax bona est.
+portus : harbor : portus magnus est.
+quam : than : puer celerior quam amicus est.
+semper : always : puer semper currit.
+servat : keeps : pater librum servat.
+servavit : kept : pater librum servavit.
+solus : alone : puer solus est.
+suus : his own : puer librum suum habet.
+tacet : is silent : puer tacet.
+tacuit : was silent : puer tacuit.
+uxor : wife : uxor venit.
+vehementer : strongly : vir vehementer clamat.
+vos : you (plural) : vos ridetis.
+civis : citizen : civis in urbe habitat.
+convenit : meets : puer amicum convenit.
+credit : believes : puer patri credit.
+de : about : pater de re narrat.
+favet : favors : pater filio favet.
+favit : favored : pater filio favit.
+igitur : therefore : puer venit, igitur sedet.
+invitat : invites : pater amicum invitat.
+invitavit : invited : pater amicum invitavit.
+it : goes : puer in villam it.
+iit : went : puer in villam iit.
+legit : reads : puer librum legit.
+liberalis : kind : vir liberalis est.
+minime : not at all : puer minime ridet.
+murus : wall : murus altus est.
+noster : our : pater noster venit.
+nunc : now : puer nunc dormit.
+placet : pleases : liber puero placet.
+placuit : pleased : liber puero placuit.
+primus : first : puer primus venit.
+promittit : promises : puer rem promittit.
+promisit : promised : puer rem promisit.
+pugna : fight : pugna magna est.
+senator : senator : senator venit.
+sollicitus : worried : pater sollicitus est.
+stultus : foolish : puer stultus est.
+vale : goodbye : vale, amice!
+verberat : beats : vir puerum verberat.
+verberavit : beat : vir puerum verberavit.
+vir : man : vir fortis est.
+amittit : loses : puer librum amittit.
+amisit : lost : puer librum amisit.
+bonus : good : liber bonus est.
+complet : fills : puer vas complet.
+complevit : filled : puer vas complevit.
+custodit : guards : vir portam custodit.
+custodivit : guarded : vir portam custodivit.
+epistula : letter : epistula longa est.
+flamma : flame : flamma magna est.
+fortiter : bravely : vir fortiter pugnat.
+frustra : in vain : puer frustra clamat.
+fugit : flees : fur fugit.
+fundus : farm : fundus magnus est.
+iacet : lies : puer in terra iacet.
+iacuit : lay : puer in terra iacuit.
+iam : now : puer iam venit.
+mirabilis : wonderful : res mirabilis est.
+mittit : sends : pater epistulam mittit.
+misit : sent : pater epistulam misit.
+mons : mountain : mons altus est.
+optimi : best (plural) : optimi viri adsunt.
+paene : almost : puer paene cadit.
+sentit : feels : puer dolorem sentit.
+sensit : felt : puer dolorem sensit.
+tandem : finally : puer tandem venit.
+templum : temple : templum magnum est.
+terra : land : terra lata est.
+timet : fears : puer leonem timet.
+timuit : feared : puer leonem timuit.
+unus : one : unus puer venit.
+dos : gift : dos magna est.
+tres : three : tres pueri currunt.
