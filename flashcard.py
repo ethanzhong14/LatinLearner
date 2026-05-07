@@ -236,7 +236,7 @@ def apply_dont_know_effect(word: str):
 
 # ---------- App ----------
 
-st.set_page_config(page_title="Palabra Español", page_icon="data/icon.png")
+st.set_page_config(page_title="Verbum Latinum", page_icon="data/icon.png")
 
 
 def apply_background(color: str = "#F6F7FB") -> None:
