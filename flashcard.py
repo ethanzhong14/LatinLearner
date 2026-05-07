@@ -31,7 +31,7 @@ NEW_WORDS_FILE = "data/new_words.txt"
 MODES = ("New words", "Review", "5 Day", "15 Day", "Today")
 
 
-def render_sidebar_branding(icon_path: str = "data/icon.png", title: str = "Palabra Español"):
+def render_sidebar_branding(icon_path: str = "data/icon.png", title: str = "Verbum Latinum"):
     """Render app icon and title at the top of the sidebar."""
     try:
         with open(icon_path, "rb") as fh:
