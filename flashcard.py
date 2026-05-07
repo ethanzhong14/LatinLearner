@@ -1,0 +1,386 @@
+import base64
+import html
+import json
+import random
+from datetime import date
+
+import streamlit as st
+import streamlit.components.v1 as components
+
+from lib.file_util import (
+    load_dictionary,
+    load_review_words,
+    load_due_words,
+    remove_word_from_practice_file,
+    upsert_word_in_difficult_file,
+    remove_word_from_difficult_file,
+    move_word_between_difficult_files,
+    load_today_words,
+    add_word_to_today_file,
+    remove_word_from_today_file,
+    load_new_words,
+    merge_new_words_to_dictionary,
+)
+
+DICTIONARY_FILE = "data/dictionary.txt"
+PRACTICE_FILE = "data/to_practice.txt"
+DIFFICULT_5_FILE = "data/difficult_5.txt"
+DIFFICULT_15_FILE = "data/difficult_15.txt"
+TODAY_FILE = "data/today.txt"
+NEW_WORDS_FILE = "data/new_words.txt"
+MODES = ("New words", "Review", "5 Day", "15 Day", "Today")
+
+
+def render_sidebar_branding(icon_path: str = "data/icon.png", title: str = "Palabra Español"):
+    """Render app icon and title at the top of the sidebar."""
+    try:
+        with open(icon_path, "rb") as fh:
+            icon_b64 = base64.b64encode(fh.read()).decode("ascii")
+        st.sidebar.markdown(
+            f"""
+            <div class="sidebar-brand">
+                <img class="sidebar-brand-icon" src="data:image/png;base64,{icon_b64}" width="38" height="38" />
+                <span class="sidebar-brand-title">{title}</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    except Exception:
+        st.sidebar.markdown(f"### {title}")
+
+
+def load_words_for_mode(mode: str):
+    today = date.today()
+    dictionary = st.session_state.dictionary
+    mode_loaders = {
+        "New words": lambda: list(load_new_words(NEW_WORDS_FILE).keys()),
+        "Review": lambda: load_review_words(PRACTICE_FILE, dictionary),
+        "5 Day": lambda: load_due_words(
+            DIFFICULT_5_FILE,
+            interval_days=5,
+            dictionary=dictionary,
+            today=today,
+        ),
+        "15 Day": lambda: load_due_words(
+            DIFFICULT_15_FILE,
+            interval_days=15,
+            dictionary=dictionary,
+            today=today,
+        ),
+        "Today": lambda: load_today_words(TODAY_FILE, dictionary),
+    }
+    return mode_loaders.get(mode, mode_loaders["Review"])()
+
+
+def refresh_word_sources() -> None:
+    st.session_state.new_words = load_new_words(NEW_WORDS_FILE)
+    st.session_state.dictionary = load_dictionary(DICTIONARY_FILE)
+
+
+def reset_ui_flags() -> None:
+    st.session_state.show_hint = False
+    st.session_state.show_answer = False
+    st.session_state.pending_dont_know = False
+    st.session_state.show_verify = False
+
+
+def merge_new_word_and_refresh(word: str) -> None:
+    merge_new_words_to_dictionary(NEW_WORDS_FILE, DICTIONARY_FILE, word)
+    refresh_word_sources()
+
+
+def render_examples(example_text: str, *, label: str = "Examples:") -> None:
+    examples = [e.strip() for e in example_text.split('|') if e.strip()]
+    if examples:
+        st.markdown(f"**{label}**")
+        for idx, ex in enumerate(examples):
+            safe_text_js = json.dumps(ex)
+            safe_text_html = html.escape(ex)
+            button_id = f"copy_icon_{idx}"
+            components.html(
+                f"""
+                <div style="display:flex;align-items:center;gap:8px;background:#E8F2FF;border-radius:8px;padding:10px 12px;margin:4px 0;">
+                    <div style="flex:1;color:#0f172a;line-height:1.4;">{safe_text_html}</div>
+                    <button
+                        id="{button_id}"
+                        title="Copy sentence"
+                        aria-label="Copy sentence"
+                        style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:transparent;border:none;border-radius:6px;cursor:pointer;padding:0;"
+                        onclick='navigator.clipboard.writeText({safe_text_js}).then(() => {{
+                            const btn = document.getElementById("{button_id}");
+                            btn.style.opacity = "0.5";
+                            setTimeout(() => btn.style.opacity = "1", 180);
+                        }});'
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="9" y="9" width="11" height="11" rx="2" stroke="#334155" stroke-width="1.8"></rect>
+                            <rect x="4" y="4" width="11" height="11" rx="2" stroke="#334155" stroke-width="1.8"></rect>
+                        </svg>
+                    </button>
+                </div>
+                """,
+                height=56,
+            )
+
+
+def reset_session_for_new_wordlist(words):
+    st.session_state.practice_words = words
+    st.session_state.current_word = random.choice(words) if words else None
+    reset_ui_flags()
+
+
+def ensure_initialized():
+    if "dictionary" not in st.session_state:
+        st.session_state.dictionary = load_dictionary(DICTIONARY_FILE)
+
+    if "new_words" not in st.session_state:
+        st.session_state.new_words = load_new_words(NEW_WORDS_FILE)
+
+    if "mode" not in st.session_state:
+        st.session_state.mode = "New words"
+
+    if "practice_words" not in st.session_state:
+        words = load_words_for_mode(st.session_state.mode)
+        reset_session_for_new_wordlist(words)
+
+    if "show_hint" not in st.session_state:
+        st.session_state.show_hint = False
+
+    if "show_answer" not in st.session_state:
+        st.session_state.show_answer = False
+
+    if "pending_dont_know" not in st.session_state:
+        st.session_state.pending_dont_know = False
+    if "show_verify" not in st.session_state:
+        st.session_state.show_verify = False
+
+
+def reload_current_mode_words(keep_current_word: bool = False):
+    """
+    Reload current mode word list from disk after file updates.
+    Optionally keep the current word if it still exists in the list.
+    """
+    current = st.session_state.current_word
+    words = load_words_for_mode(st.session_state.mode)
+
+    st.session_state.practice_words = words
+    reset_ui_flags()
+
+    if not words:
+        st.session_state.current_word = None
+        return
+
+    if keep_current_word and current in words:
+        st.session_state.current_word = current
+    else:
+        st.session_state.current_word = random.choice(words)
+
+
+def all_reviewed_view():
+    st.success("You have reviewed everything, great job!")
+    st.stop()
+
+
+def handle_i_know(word: str):
+    """
+    Apply "I know" effects immediately, then reload current mode list.
+    """
+    today = date.today()
+    mode = st.session_state.mode
+    mode_actions = {
+        "New words": lambda: merge_new_word_and_refresh(word),
+        "Review": lambda: remove_word_from_practice_file(PRACTICE_FILE, word),
+        "5 Day": lambda: move_word_between_difficult_files(
+            DIFFICULT_5_FILE, DIFFICULT_15_FILE, word, today
+        ),
+        "15 Day": lambda: (
+            remove_word_from_difficult_file(DIFFICULT_15_FILE, word),
+            remove_word_from_practice_file(PRACTICE_FILE, word),
+        ),
+        "Today": lambda: remove_word_from_today_file(TODAY_FILE, word),
+    }
+    action = mode_actions.get(mode)
+    if action is not None:
+        action()
+
+    reload_current_mode_words()
+
+
+def apply_dont_know_effect(word: str):
+    """
+    File mutations for "Don't know" (applied when user clicks OK),
+    including the new rule: in ALL modes except Today, also add to today.txt.
+    """
+    today = date.today()
+    mode = st.session_state.mode
+    difficult_target = {
+        "New words": DIFFICULT_5_FILE,
+        "Review": DIFFICULT_5_FILE,
+        "5 Day": DIFFICULT_5_FILE,
+        "15 Day": DIFFICULT_15_FILE,
+    }
+
+    if mode == "New words":
+        merge_new_word_and_refresh(word)
+
+    if mode in difficult_target:
+        upsert_word_in_difficult_file(difficult_target[mode], word, today)
+        add_word_to_today_file(TODAY_FILE, word)
+    elif mode == "Today":
+        # Today mode: DON'T add to today.txt again; just show answer then OK → next word
+        # No file change required for Don't know.
+        pass
+
+    reload_current_mode_words()
+
+
+# ---------- App ----------
+
+st.set_page_config(page_title="Palabra Español", page_icon="data/icon.png")
+
+
+def apply_background(color: str = "#F6F7FB") -> None:
+    try:
+        with open("data/theme.css", "r", encoding="utf-8") as fh:
+            css = fh.read()
+            st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        # Fallback: inject minimal CSS to set background color
+        css = f"""
+        <style>
+        body {{ background-color: {color}; }}
+        .stApp {{
+            background-color: {color};
+        }}
+        </style>
+        """
+        st.markdown(css, unsafe_allow_html=True)
+
+
+try:
+    ensure_initialized()
+except FileNotFoundError as e:
+    st.error(str(e))
+    st.stop()
+
+# Apply requested background color
+apply_background("#F6F7FB")
+
+# Sidebar: mode switching + due counter
+render_sidebar_branding()
+st.sidebar.header("Mode")
+
+disable_mode_switch = st.session_state.pending_dont_know
+
+for mode in MODES:
+    button_type = "primary" if mode == st.session_state.mode else "secondary"
+    mode_key = mode.lower().replace(" ", "_")
+    if st.sidebar.button(
+        mode,
+        use_container_width=True,
+        disabled=disable_mode_switch,
+        type=button_type,
+        key=f"mode_btn_{mode_key}",
+    ):
+        if st.session_state.mode != mode:
+            st.session_state.mode = mode
+            reload_current_mode_words()
+        st.rerun()
+
+st.sidebar.header("Learn")
+due_count = len(st.session_state.practice_words) if st.session_state.practice_words else 0
+st.sidebar.metric("Due", due_count)
+
+st.sidebar.header("Settings")
+if st.sidebar.button("🔄 Reload files", use_container_width=True, disabled=disable_mode_switch):
+    for k in [
+        "dictionary",
+        "new_words",
+        "practice_words",
+        "current_word",
+        "show_hint",
+        "show_answer",
+        "show_verify",
+        "pending_dont_know",
+        "mode",
+    ]:
+        st.session_state.pop(k, None)
+    st.rerun()
+
+st.markdown(
+    f"""
+    <div class="main-mode-title">{st.session_state.mode}</div>
+    <hr class="main-mode-divider" />
+    """,
+    unsafe_allow_html=True,
+)
+
+# If nothing due, celebrate and stop
+with st.container(key="main_content_frame"):
+    if not st.session_state.practice_words:
+        all_reviewed_view()
+
+    word = st.session_state.current_word
+    if word is None:
+        all_reviewed_view()
+
+    # Get card: from dictionary if available, else from new_words
+    if word in st.session_state.dictionary and word in st.session_state.new_words:
+        # Merge both cards for display
+        from lib.file_util import merge_new_word_into_dictionary
+        card = merge_new_word_into_dictionary(st.session_state.new_words[word], st.session_state.dictionary)
+    elif word in st.session_state.dictionary:
+        card = st.session_state.dictionary[word]
+    elif word in st.session_state.new_words:
+        card = st.session_state.new_words[word]
+    else:
+        # Word not found in either; skip
+        st.error(f"Word '{word}' not found in any source.")
+        st.stop()
+    st.markdown(f"## {word}")
+
+    # Two-step flow for "Don't know": show answer, then OK applies effects and moves on.
+    if st.session_state.pending_dont_know:
+        st.success(f"Meaning: {card.meaning}")
+        render_examples(card.example, label="Examples:")
+
+        if st.button("OK"):
+            apply_dont_know_effect(word)
+            st.rerun()
+    else:
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            if st.button("✅ I know"):
+                handle_i_know(word)
+                st.rerun()
+
+        with col2:
+            # Hint is optional in Today mode too; it only shows example sentence (no file changes)
+            if st.button("💡 Hint"):
+                st.session_state.show_hint = True
+                st.session_state.show_verify = False
+                st.session_state.pending_dont_know = False
+                st.session_state.show_answer = False
+
+        with col3:
+            if st.button("🔍 Verify"):
+                # Show meaning + example only; no other side effects
+                st.session_state.show_verify = True
+                st.session_state.show_hint = False
+                st.session_state.show_answer = False
+                st.session_state.pending_dont_know = False
+                st.rerun()
+
+        with col4:
+            if st.button("❌ Don't know"):
+                # Show answer now; file updates (except Today mode) happen when user clicks OK
+                st.session_state.pending_dont_know = True
+                st.session_state.show_answer = True
+                st.session_state.show_hint = False
+                st.rerun()
+        if st.session_state.show_verify:
+            st.success(f"Meaning: {card.meaning}")
+            render_examples(card.example, label="Examples:")
+        elif st.session_state.show_hint:
+            render_examples(card.example, label="Example:")
