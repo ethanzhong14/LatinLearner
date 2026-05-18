@@ -54,7 +54,6 @@ equus : horse : equus celer currit.
 errat : wanders, makes a mistake : puer in silva errat.
 esse : to be, exist : difficile est esse bonus.
 ex : out of, from : puer ex urbe venit.
-exercitus : army : exercitus magnus est.
 faber : craftsman, smith : faber gladium facit.
 facilis : easy : labor facilis est.
 fama : fame, rumor : fama per urbem venit.
@@ -63,7 +62,6 @@ fenestra : window : fenestra aperta est.
 ferme : almost, nearly : ferme omnes adsunt.
 fessus : tired : puer fessus est.
 figura : shape, figure : figura parva est.
-finis : end, boundary : finis viae adest.
 flumen : river : flumen longum est.
 foedus : ugly, foul : monstrum foedum est.
 forma : form, beauty : forma puellae pulchra est.
@@ -73,7 +71,6 @@ galea : helmet : miles galeam habet.
 gaudet : rejoices, is glad : puer gaudet.
 gens : people, nation : gens magna est.
 gerit : carries, wears : vir gladium gerit.
-gloria : glory, fame : gloria magna est.
 gratia : thanks, favor : gratias ago.
 gravis : heavy, serious : saxum grave est.
 gustat : tastes : puer vinum gustat.
@@ -114,9 +111,7 @@ malus : bad, evil : vir malus est.
 mare : sea : mare magnum est.
 medicus : doctor : medicus venit.
 memoria : memory : memoria bona est.
-mensa : table : liber in mensa est.
 miles : soldier : miles gladium portat.
-mons : mountain : mons altus est.
 mors : death : mors subito venit.
 mortem : death : vir mortem timet.
 mos : custom, habit : mos antiquus est.

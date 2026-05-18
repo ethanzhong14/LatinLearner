@@ -1,0 +1,12 @@
+2026-05-17,cupit
+2026-05-17,dos
+2026-05-17,finis
+2026-05-17,fortis
+2026-05-17,iacuit
+2026-05-17,inquit
+2026-05-17,intellexit
+2026-05-17,mensa
+2026-05-17,nunc
+2026-05-17,optimi
+2026-05-17,servavit
+2026-05-17,venit
