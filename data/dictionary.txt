@@ -33,7 +33,7 @@ circumspectat : looks around : puer circumspectat.
 civis : citizen : civis in urbe habitat.
 clamat : shouts : puer clamat.
 clamor : shout : clamor magnus est.
-complet : fills : puer vas complet.
+complet : fills, complete : puer vas complet.
 complevit : filled : puer vas complevit.
 conspexit : caught sight of : puer navem conspexit.
 conspicit : catches sight of : puer navem conspicit.
