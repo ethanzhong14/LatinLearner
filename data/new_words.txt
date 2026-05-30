@@ -5,18 +5,13 @@ ante : before, in front of : puer ante ianuam stat.
 aqua : water : aqua frigida est.
 arma : arms, weapons : vir arma portat.
 ars : art, skill : ars difficilis est.
-asinus : donkey : asinus lentus est.
 at : but, yet : puer currit, at cadit.
 aurum : gold : aurum pretiosum est.
 aut : or : vinum aut aqua est.
-avis : bird : avis in caelo volat.
 bellum : war : bellum longum est.
 bene : well : puer bene laborat.
 bestia : beast, animal : bestia magna est.
-bonus : good, kind : vir bonus est.
-brevis : short, brief : via brevis est.
 caelum : sky, heaven : caelum caeruleum est.
-campus : field, plain : agricola in campo laborat.
 cantat : sings : puella cantat.
 capra : goat : capra in agro ambulat.
 carus : dear, expensive : amicus carus est.
@@ -28,7 +23,6 @@ centum : hundred : centum viri adsunt.
 cervus : deer : cervus in silva currit.
 cibus : food, meal : cibus paratus est.
 claudit : closes, shuts : servus ianuam claudit.
-collis : hill : collis altus est.
 color : color : color pulcher est.
 contra : against, opposite : vir contra hostem pugnat.
 corpus : body : corpus in terra iacet.
@@ -47,7 +41,6 @@ doceo : teach : magister pueros docet.
 dolor : pain, grief : dolor magnus est.
 domus : house, home : domus magna est.
 donum : gift, present : donum pulchrum est.
-dubitat : doubts, hesitates : puer dubitat.
 dum : while : puer cantat dum ambulat.
 dux : leader, general : dux exercitum ducit.
 equus : horse : equus celer currit.
@@ -65,19 +58,15 @@ figura : shape, figure : figura parva est.
 flumen : river : flumen longum est.
 foedus : ugly, foul : monstrum foedum est.
 forma : form, beauty : forma puellae pulchra est.
-frigus : cold : frigus magnum est.
 frumentum : grain, wheat : agricola frumentum portat.
 galea : helmet : miles galeam habet.
 gaudet : rejoices, is glad : puer gaudet.
 gens : people, nation : gens magna est.
 gerit : carries, wears : vir gladium gerit.
-gratia : thanks, favor : gratias ago.
 gravis : heavy, serious : saxum grave est.
 gustat : tastes : puer vinum gustat.
 herba : grass, plant : herba viridis est.
 hic : here, this : hic est amicus meus.
-hiems : winter : hiems frigida est.
-hora : hour, time : hora prima est.
 hostis : enemy : hostis appropinquat.
 ianuam : door : puer ianuam aperit.
 ignis : fire : ignis magnus est.
@@ -86,7 +75,6 @@ infans : infant, child : infans dormit.
 infra : below, beneath : canis infra mensam iacet.
 insula : island : insula magna est.
 integer : whole, untouched : liber integer est.
-inter : between, among : puer inter amicos stat.
 ipse : himself, herself : ipse venit.
 ira : anger : ira magna est.
 iter : journey, road : iter longum est.
@@ -94,8 +82,6 @@ iuvat : helps, pleases : pater filium iuvat.
 labor : work, labor : labor difficilis est.
 lacus : lake : lacus magnus est.
 laetus : happy, joyful : puella laeta est.
-lapis : stone : lapis magnus est.
-latus : side : puer ad latus viae stat.
 laus : praise : laus magna est.
 lectus : bed : puer in lecto dormit.
 leo : lion : leo ferox est.
@@ -112,18 +98,14 @@ mare : sea : mare magnum est.
 medicus : doctor : medicus venit.
 memoria : memory : memoria bona est.
 miles : soldier : miles gladium portat.
-mors : death : mors subito venit.
-mortem : death : vir mortem timet.
 mos : custom, habit : mos antiquus est.
 moveo : move : saxum moveo.
-multum : much, greatly : puer multum laborat.
 mundus : world, clean : mundus magnus est.
 nauta : sailor : nauta navem videt.
 nemo : nobody, no one : nemo venit.
 nihil : nothing : nihil audio.
 nix : snow : nix alba est.
 nomen : name : nomen meum Marcus est.
-novus : new : liber novus est.
 numerus : number : numerus magnus est.
 occidit : kills, falls : leo cervum occidit.
 octo : eight : octo pueri adsunt.
@@ -131,14 +113,12 @@ olim : once, formerly : olim hic habitabat.
 opera : work, effort : opera longa est.
 oppidum : town : oppidum parvum est.
 ora : coast, shore : navis ad oram venit.
-os : mouth, face : os puerile est.
 ovis : sheep : ovis in agro stat.
 parens : parent : parentes adsunt.
 pars : part : pars parva est.
 patria : homeland, country : patria mea magna est.
 pauci : few : pauci viri adsunt.
 paulus : small, little : paulus cibus est.
-periculum : danger : periculum magnum est.
 pes : foot : pes dolet.
 plenus : full : poculum plenum est.
 poena : punishment : poena magna est.
@@ -162,14 +142,12 @@ recipit : receives, welcomes : pater hospitem recipit.
 regina : queen : regina in palatio habitat.
 rex : king : rex imperium habet.
 ripa : riverbank, shore : puer ad ripam ambulat.
-roma : Rome : Roma magna urbs est.
 sacer : sacred, holy : templum sacrum est.
 sagitta : arrow : sagitta longa est.
 sana : healthy : puella sana est.
 scelus : crime, evil deed : scelus grave est.
 scientia : knowledge : scientia magna est.
 scutum : shield : miles scutum portat.
-secum : with himself, with herself : secum librum portat.
 semita : path, trail : semita longa est.
 septem : seven : septem pueri adsunt.
 servit : serves : servus domino servit.
@@ -181,13 +159,11 @@ socius : companion, ally : socius bonus est.
 somnus : sleep : somnus longus est.
 soror : sister : soror cantat.
 spatium : space, distance : spatium longum est.
-spes : hope : spes bona est.
 stella : star : stella clara est.
 sub : under, beneath : canis sub mensa dormit.
 sum : I am : ego laetus sum.
 super : above, over : avis super arborem volat.
 tabula : tablet, board : tabula magna est.
-taurus : bull : taurus fortis est.
 tempestas : storm, weather : tempestas magna venit.
 tempus : time : tempus breve est.
 tenet : holds, keeps : puer librum tenet.
@@ -201,7 +177,6 @@ urbs : city : urbs magna est.
 ursus : bear : ursus ferox est.
 usus : use : usus bonus est.
 uterque : each of two, both : uterque puer currit.
-uxorem : wife : vir uxorem amat.
 vacca : cow : vacca in agro stat.
 validus : strong, healthy : vir validus est.
 varius : different, varied : colores varii sunt.
@@ -218,5 +193,4 @@ villa : country house, farm : villa magna est.
 vita : life : vita longa est.
 vivit : lives : senex adhuc vivit.
 vox : voice : vox clara est.
-vult : wants, wishes : puer aquam vult.
 vulnus : wound : vulnus grave est.
