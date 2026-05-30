@@ -20,6 +20,8 @@ from lib.file_util import (
     remove_word_from_today_file,
     load_new_words,
     merge_new_words_to_dictionary,
+    increment_daily_progress,
+    load_daily_progress_total,
 )
 
 DICTIONARY_FILE = "data/dictionary.txt"
@@ -28,7 +30,15 @@ DIFFICULT_5_FILE = "data/difficult_5.txt"
 DIFFICULT_15_FILE = "data/difficult_15.txt"
 TODAY_FILE = "data/today.txt"
 NEW_WORDS_FILE = "data/new_words.txt"
+DAILY_PROGRESS_FILE = "data/daily_progress.csv"
 MODES = ("New words", "Review", "5 Day", "15 Day", "Today")
+PROGRESS_CATEGORY_BY_MODE = {
+    "New words": "new",
+    "Review": "review",
+    "5 Day": "day_5",
+    "15 Day": "day_15",
+    "Today": "today",
+}
 
 
 def render_sidebar_branding(icon_path: str = "data/icon.png", title: str = "Verbum Latinum"):
@@ -176,6 +186,16 @@ def reload_current_mode_words(keep_current_word: bool = False):
         st.session_state.current_word = random.choice(words)
 
 
+def record_practice_for_current_mode() -> None:
+    category = PROGRESS_CATEGORY_BY_MODE.get(st.session_state.mode)
+    if category is not None:
+        increment_daily_progress(DAILY_PROGRESS_FILE, category)
+
+
+def today_learned_count() -> int:
+    return load_daily_progress_total(DAILY_PROGRESS_FILE)
+
+
 def all_reviewed_view():
     st.success("You have reviewed everything, great job!")
     st.stop()
@@ -201,6 +221,7 @@ def handle_i_know(word: str):
     }
     action = mode_actions.get(mode)
     if action is not None:
+        record_practice_for_current_mode()
         action()
 
     reload_current_mode_words()
@@ -222,6 +243,8 @@ def apply_dont_know_effect(word: str):
 
     if mode == "New words":
         merge_new_word_and_refresh(word)
+
+    record_practice_for_current_mode()
 
     if mode in difficult_target:
         upsert_word_in_difficult_file(difficult_target[mode], word, today)
@@ -289,7 +312,22 @@ for mode in MODES:
 
 st.sidebar.header("Learn")
 due_count = len(st.session_state.practice_words) if st.session_state.practice_words else 0
-st.sidebar.metric("Due", due_count)
+learned_count = today_learned_count()
+st.sidebar.markdown(
+    f"""
+    <div class="learn-progress-table">
+        <div class="learn-progress-cell">
+            <div class="learn-progress-label">Due</div>
+            <div class="learn-progress-value">{due_count}</div>
+        </div>
+        <div class="learn-progress-cell">
+            <div class="learn-progress-label">Learned</div>
+            <div class="learn-progress-value">{learned_count}</div>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 st.sidebar.header("Settings")
 if st.sidebar.button("🔄 Reload files", use_container_width=True, disabled=disable_mode_switch):
