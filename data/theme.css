@@ -137,6 +137,32 @@ html, body, .stApp {
     margin: 0 auto !important;
 }
 
+/* Sidebar Learn progress */
+[data-testid="stSidebar"] .learn-progress-table {
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+[data-testid="stSidebar"] .learn-progress-cell {
+    min-width: 0;
+    text-align: center;
+}
+[data-testid="stSidebar"] .learn-progress-label {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.1;
+    font-weight: 600;
+}
+[data-testid="stSidebar"] .learn-progress-value {
+    margin-top: 4px;
+    color: #0f172a;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
 /* Main content mode heading */
 .main-mode-title {
     font-size: 1.7rem;

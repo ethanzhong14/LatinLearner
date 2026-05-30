@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import csv
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
+from io import StringIO
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -38,6 +40,10 @@ def write_text_file(path: str | Path, content: str, *, encoding: str = "utf-8") 
     p = path if isinstance(path, Path) else Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding=encoding)
+
+
+PROGRESS_CATEGORY_FIELDS = ["new", "review", "day_5", "day_15", "today"]
+PROGRESS_FIELDS = ["date", *PROGRESS_CATEGORY_FIELDS, "total"]
 
 
 # =========================================================
@@ -132,6 +138,114 @@ def _upsert_word_in_list_file(path: Path, word: str) -> None:
 def _remove_word_from_list_file(path: Path, word: str, *, missing_ok: bool = False) -> None:
     words = _load_word_list_file(path, missing_ok=missing_ok)
     _write_word_list_file(path, [w for w in words if w != word])
+
+
+# -------- daily_progress.csv --------
+
+def _empty_progress_row(day: date) -> Dict[str, int | str]:
+    return {
+        "date": day.isoformat(),
+        "new": 0,
+        "review": 0,
+        "day_5": 0,
+        "day_15": 0,
+        "today": 0,
+        "total": 0,
+    }
+
+
+def parse_daily_progress_text(text: str) -> Dict[str, Dict[str, int | str]]:
+    """
+    daily_progress.csv format:
+        date,new,review,day_5,day_15,today,total
+
+    Returns mapping: YYYY-MM-DD -> row. Invalid rows are skipped.
+    """
+    rows: Dict[str, Dict[str, int | str]] = {}
+    if not text.strip():
+        return rows
+
+    reader = csv.DictReader(StringIO(text))
+    if not reader.fieldnames:
+        return rows
+
+    for raw in reader:
+        day = (raw.get("date") or "").strip()
+        try:
+            datetime.strptime(day, "%Y-%m-%d")
+        except ValueError:
+            continue
+
+        row: Dict[str, int | str] = {"date": day}
+        for field in PROGRESS_CATEGORY_FIELDS:
+            try:
+                row[field] = int((raw.get(field) or "0").strip())
+            except ValueError:
+                row[field] = 0
+        row["total"] = sum(int(row[field]) for field in PROGRESS_CATEGORY_FIELDS)
+        rows[day] = row
+    return rows
+
+
+def serialize_daily_progress(rows: Dict[str, Dict[str, int | str]]) -> str:
+    output = StringIO()
+    writer = csv.DictWriter(output, fieldnames=PROGRESS_FIELDS, lineterminator="\n")
+    writer.writeheader()
+    for day in sorted(rows):
+        row = rows[day]
+        normalized = {"date": day}
+        for field in PROGRESS_CATEGORY_FIELDS:
+            normalized[field] = int(row.get(field, 0))
+        normalized["total"] = sum(normalized[field] for field in PROGRESS_CATEGORY_FIELDS)
+        writer.writerow(normalized)
+    return output.getvalue()
+
+
+def increment_daily_progress(
+    progress_path: str,
+    category: str,
+    *,
+    day: Optional[date] = None,
+) -> None:
+    if category not in PROGRESS_CATEGORY_FIELDS:
+        raise ValueError(f"Unknown progress category: {category}")
+    if day is None:
+        day = date.today()
+
+    p = resolve_path(progress_path)
+    try:
+        text = read_text_file(p)
+    except FileNotFoundError:
+        text = ""
+
+    rows = parse_daily_progress_text(text)
+    day_key = day.isoformat()
+    row = rows.get(day_key, _empty_progress_row(day))
+    row[category] = int(row.get(category, 0)) + 1
+    row["total"] = sum(int(row.get(field, 0)) for field in PROGRESS_CATEGORY_FIELDS)
+    rows[day_key] = row
+    write_text_file(p, serialize_daily_progress(rows))
+
+
+def load_daily_progress_total(
+    progress_path: str,
+    *,
+    day: Optional[date] = None,
+) -> int:
+    if day is None:
+        day = date.today()
+
+    p = resolve_path(progress_path)
+    try:
+        text = read_text_file(p)
+    except FileNotFoundError:
+        return 0
+
+    rows = parse_daily_progress_text(text)
+    row = rows.get(day.isoformat())
+    if row is None:
+        return 0
+    return int(row.get("total", 0))
 
 
 # -------- difficult_*.txt --------

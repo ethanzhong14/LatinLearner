@@ -1,13 +1,19 @@
 import unittest
 from datetime import date
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from lib.file_util import (
     Card,
     due_words_from_difficult_map,
+    increment_daily_progress,
+    load_daily_progress_total,
     merge_new_word_into_dictionary,
+    parse_daily_progress_text,
     parse_dictionary_text,
     parse_difficult_text,
     parse_practice_list_text,
+    serialize_daily_progress,
     serialize_practice_list,
 )
 
@@ -113,6 +119,44 @@ class TestFileUtil(unittest.TestCase):
         self.assertEqual(merged.meaning, "hello")
         self.assertIn("hola amigo", merged.example)
         self.assertIn("hola de nuevo", merged.example)
+
+    def test_daily_progress_parse_and_serialize_recomputes_total(self):
+        text = "date,new,review,day_5,day_15,today,total\n2026-05-29,1,2,3,4,5,999\n"
+
+        rows = parse_daily_progress_text(text)
+        self.assertEqual(rows["2026-05-29"]["total"], 15)
+
+        serialized = serialize_daily_progress(rows)
+        self.assertIn("2026-05-29,1,2,3,4,5,15", serialized)
+
+    def test_increment_daily_progress_creates_and_updates_day_row(self):
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "daily_progress.csv"
+
+            increment_daily_progress(str(path), "new", day=date(2026, 5, 29))
+            increment_daily_progress(str(path), "review", day=date(2026, 5, 29))
+            increment_daily_progress(str(path), "new", day=date(2026, 5, 29))
+
+            rows = parse_daily_progress_text(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(rows["2026-05-29"]["new"], 2)
+        self.assertEqual(rows["2026-05-29"]["review"], 1)
+        self.assertEqual(rows["2026-05-29"]["total"], 3)
+
+    def test_load_daily_progress_total_returns_today_total(self):
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "daily_progress.csv"
+            path.write_text(
+                "date,new,review,day_5,day_15,today,total\n"
+                "2026-05-29,1,2,3,4,5,15\n",
+                encoding="utf-8",
+            )
+
+            total = load_daily_progress_total(str(path), day=date(2026, 5, 29))
+            missing_total = load_daily_progress_total(str(path), day=date(2026, 5, 30))
+
+        self.assertEqual(total, 15)
+        self.assertEqual(missing_total, 0)
 
 
 if __name__ == "__main__":
